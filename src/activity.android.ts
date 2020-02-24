@@ -4,8 +4,8 @@ import * as app from "tns-core-modules/application";
 import { KeyCodes } from "./keycodes";
 
 // The class below is not currently used (also commented in AndroidManifest.xml)
-@JavaProxy("com.tns.CompanionTVActivity")
-class CompanionTVActivity extends androidx.appcompat.app.AppCompatActivity {
+@JavaProxy("com.tns.SimpleCTVActivity")
+class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity {
   private highlightedElement: ViewBase;
   public isNativeScriptActivity;
   private _callbacks: AndroidActivityCallbacks;
