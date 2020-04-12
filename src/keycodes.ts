@@ -7,7 +7,8 @@ export class KeyCodes {
     public static readonly enter: number = 66;
     
     public static readonly playpause: number = 85;
-    public static readonly ff: number = 90;
+    public static readonly ff2: number = 90;
+    public static readonly ff: number = 10;
     public static readonly rw: number = 89;
     public static readonly mute: number = 91;
     
@@ -22,6 +23,7 @@ export class KeyCodes {
             
             case KeyCodes.playpause:
             case KeyCodes.ff:
+            case KeyCodes.ff2:
             case KeyCodes.rw:
             case KeyCodes.mute:
                 return true;
