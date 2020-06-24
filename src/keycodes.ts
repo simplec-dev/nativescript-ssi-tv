@@ -8,7 +8,7 @@ export class KeyCodes {
     
     public static readonly playpause: number = 85;
     public static readonly ff2: number = 90;
-    public static readonly ff: number = 10;
+    public static readonly ff: number = 999910;
     public static readonly rw: number = 89;
     public static readonly mute: number = 91;
     
