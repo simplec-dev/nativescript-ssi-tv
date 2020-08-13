@@ -1,6 +1,6 @@
 {
-	"name": "nativescript-ssi-tv",
-	"version": "1.0.4",
+	"name": "@simplec-dev/nativescript-ssi-tv",
+	"version": "1.0.5",
 	"description": "Plugin for AndroidTV to send key presses to application.",
 	"main": "activity",
 	"nativescript": {
@@ -12,6 +12,9 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/simplec-dev/nativescript-ssi-tv.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
 	},
 	"scripts": {
 		"tsc": "npm i && tsc",
