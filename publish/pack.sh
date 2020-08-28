@@ -28,7 +28,7 @@ pack() {
     # compile package and copy files required by npm
     echo 'Building /src...'
     cd "$TO_SOURCE_DIR"
-    node_modules/.bin/tsc
+    npm build
     cd ..
 
     echo 'Creating package...'
@@ -41,7 +41,7 @@ pack() {
 
     # delete source directory used to create the package
     cd ..
-    node_modules/.bin/rimraf "$TO_SOURCE_DIR"
+    #node_modules/.bin/rimraf "$TO_SOURCE_DIR"
 }
 
 install && pack

@@ -24,3 +24,7 @@ publish/package
 demo/report/report.html
 demo/report/stats.json
 !demo-vue/app/app.js
+
+!src/hooks/*.js
+!src/postinstall.js
+!src/preuninstall.js

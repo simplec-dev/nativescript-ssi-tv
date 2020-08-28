@@ -1,13 +1,20 @@
 {
 	"name": "@simplec-dev/nativescript-ssi-tv",
-	"version": "1.0.5",
+	"version": "1.0.8",
 	"description": "Plugin for AndroidTV to send key presses to application.",
 	"main": "activity",
 	"nativescript": {
 		"platforms": {
 			"android": "6.0.0",
 			"ios": "6.0.1"
-		}
+		},
+		"hooks": [
+			{
+				"type": "before-prepare",
+				"script": "hooks/tv-before-prepare.js",
+				"inject": true
+			}
+		]
 	},
 	"repository": {
 		"type": "git",
@@ -23,7 +30,9 @@
 		"ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
 		"prepack": "npm run build",
 		"plugin.prepare": "npm run build && cd ../demo && tns plugin remove nativescript-ssi-tv && tns plugin add ../src",
-		"clean": "npx rimraf -- node_modules package-lock.json && npm i"
+		"clean": "npx rimraf -- node_modules package-lock.json && npm i",
+		"postinstall": "node postinstall.js",
+		"preuninstall": "node preuninstall.js"
 	},
 	"keywords": [
 		"NativeScript",
@@ -49,5 +58,7 @@
 		"tslint": "^5.12.1",
 		"semver": "^5.6.0"
 	},
-	"dependencies": {}
+	"dependencies": {
+        "@nativescript/hook": "^1.0.0"
+    }
 }
