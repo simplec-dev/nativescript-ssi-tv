@@ -12,6 +12,8 @@ export class KeyCodes {
     public static readonly rw: number = 89;
     public static readonly mute: number = 91;
     
+    public static readonly menu: number = 82;
+    
     public static isRemoteEvent(keycode: number) {
         switch (keycode) {
             case KeyCodes.up:
@@ -26,6 +28,8 @@ export class KeyCodes {
             case KeyCodes.ff2:
             case KeyCodes.rw:
             case KeyCodes.mute:
+                    
+            case KeyCodes.menu:
                 return true;
                 
             default:
