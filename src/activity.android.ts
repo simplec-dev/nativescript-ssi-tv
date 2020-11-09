@@ -6,7 +6,6 @@ import { KeyCodes } from "./keycodes";
 // The class below is not currently used (also commented in AndroidManifest.xml)
 @JavaProxy("com.tns.SimpleCTVActivity")
 class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity {
-  private highlightedElement: ViewBase;
   public isNativeScriptActivity;
   private _callbacks: AndroidActivityCallbacks;
 
@@ -47,6 +46,10 @@ class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity {
 
   public onActivityResult(requestCode: number, resultCode: number, data: android.content.Intent): void {
       this._callbacks.onActivityResult(this, requestCode, resultCode, data, super.onActivityResult);
+  }
+  
+  public onPostResume(): void {
+    this._callbacks.onPostResume(this, super.onPostResume);
   }
 
   public dispatchKeyEvent(event: android.view.KeyEvent): boolean {
