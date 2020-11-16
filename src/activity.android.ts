@@ -5,7 +5,7 @@ import { KeyCodes } from "./keycodes";
 
 // The class below is not currently used (also commented in AndroidManifest.xml)
 @JavaProxy("com.tns.SimpleCTVActivity")
-class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity {
+class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity implements androidx.lifecycle.FullLifecycleObserverAdapter {
   public isNativeScriptActivity;
   private _callbacks: AndroidActivityCallbacks;
 
@@ -18,6 +18,20 @@ class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity {
       }
 
       this._callbacks.onCreate(this, savedInstanceState, this.getIntent(), super.onCreate);
+      
+      console.log("TRYING TO REGISTER LISTENER");
+      this.getLifecycle().addObserver(this);
+      console.log("DONE** TO REGISTER LISTENER")
+  }
+  public onStateChanged(lfOwner: androidx.lifecycle.LifecycleOwner, lfEvent: androidx.lifecycle.Lifecycle.Event): void {
+    if (lfEvent==androidx.lifecycle.Lifecycle.Event.ON_PAUSE) {
+        console.log("*************** APP PAUSE");
+        app.notify({eventName: "app_lifecycle_pause"});
+    }
+    if (lfEvent==androidx.lifecycle.Lifecycle.Event.ON_RESUME) {
+        console.log("*************** APP RESUME");
+        app.notify({eventName: "app_lifecycle_resume"});
+    }
   }
 
   public onSaveInstanceState(outState: android.os.Bundle): void {
