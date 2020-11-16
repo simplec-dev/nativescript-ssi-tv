@@ -3,26 +3,11 @@ import { ViewBase } from "tns-core-modules/ui/core/view-base";
 import * as app from "tns-core-modules/application";
 import { KeyCodes } from "./keycodes";
 
-@JavaProxy("com.tns.SimpleCLifecycleObserver")
-class SimpleCLifecycleObserver extends androidx.lifecycle.GenericLifecycleObserver {
-    public onStateChanged(lfOwner: androidx.lifecycle.LifecycleOwner, lfEvent: androidx.lifecycle.Lifecycle.Event): void {
-      if (lfEvent==androidx.lifecycle.Lifecycle.Event.ON_PAUSE) {
-          console.log("*************** APP PAUSE");
-          app.notify({eventName: "app_lifecycle_pause"});
-      }
-      if (lfEvent==androidx.lifecycle.Lifecycle.Event.ON_RESUME) {
-          console.log("*************** APP RESUME");
-          app.notify({eventName: "app_lifecycle_resume"});
-      }
-    }
-}
-
 // The class below is not currently used (also commented in AndroidManifest.xml)
 @JavaProxy("com.tns.SimpleCTVActivity")
 class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity implements androidx.lifecycle.LifecycleObserver {
   public isNativeScriptActivity;
   private _callbacks: AndroidActivityCallbacks;
-  private _lfObserver: SimpleCLifecycleObserver;
 
   public onCreate(savedInstanceState: android.os.Bundle): void {
       // Set the isNativeScriptActivity in onCreate (as done in the original NativeScript activity code)
@@ -33,11 +18,6 @@ class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity impleme
       }
 
       this._callbacks.onCreate(this, savedInstanceState, this.getIntent(), super.onCreate);
-      
-      this._lfObserver = new SimpleCLifecycleObserver();
-      console.log("TRYING TO REGISTER LISTENER");
-      this.getLifecycle().addObserver(this._lfObserver);
-      console.log("DONE** TO REGISTER LISTENER")
   }
 
   public onSaveInstanceState(outState: android.os.Bundle): void {
