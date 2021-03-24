@@ -64,7 +64,11 @@ class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity impleme
             action: event.getAction()==android.view.KeyEvent.ACTION_DOWN?"down":"up"
         };
 
-        app.notify(eventData);
+        try {
+            app.notify(eventData);
+        } catch (e) {
+            //gobble because sometimes the event chain gets broken when processing causes screen to change
+        }
     }
     if (KeyCodes.isRemoteEvent(event.getKeyCode())) {
         return true;
