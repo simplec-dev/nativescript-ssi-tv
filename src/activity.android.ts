@@ -75,4 +75,18 @@ class SimpleCTVActivity extends androidx.appcompat.app.AppCompatActivity impleme
     }
     return super.dispatchKeyEvent(event);
   }
+  
+  public onUserInteraction() : void {
+        //console.log("onUserInteraction");
+        var eventData = {
+            eventName: "AppUserInteraction"
+        };
+
+        try {
+            app.notify(eventData);
+        } catch (e) {
+            //gobble because sometimes the event chain gets broken when processing causes screen to change
+        }
+        return super.onUserInteraction();
+  }
 }
