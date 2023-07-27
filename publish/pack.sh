@@ -28,7 +28,7 @@ pack() {
     # compile package and copy files required by npm
     echo 'Building /src...'
     cd "$TO_SOURCE_DIR"
-    npm build
+    npm run build
     cd ..
 
     echo 'Creating package...'
