@@ -1,6 +1,6 @@
 {
 	"name": "@simplec-dev/nativescript-ssi-tv",
-	"version": "2.0.1",
+	"version": "2.0.3",
 	"description": "Plugin for AndroidTV to send key presses to application.",
 	"main": "activity",
 	"nativescript": {
