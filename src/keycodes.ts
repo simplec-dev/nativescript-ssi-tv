@@ -1,4 +1,5 @@
 export class KeyCodes {
+    public static readonly back: number = 111;
     public static readonly up: number = 19;
     public static readonly down: number = 20;
     public static readonly left: number = 21;
@@ -17,6 +18,7 @@ export class KeyCodes {
     public static isRemoteEvent(keycode: number) {
         switch (keycode) {
             case KeyCodes.up:
+            case KeyCodes.back:
             case KeyCodes.down:
             case KeyCodes.left:
             case KeyCodes.right:
